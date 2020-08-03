@@ -1,0 +1,14 @@
+#Start
+PATH_TO_FOLDER
+#folder
+NAME_OF_SUBFOLDER
+#names
+MATCHING_STRINGS(ex. installer) -optional
+#ext
+MATCHING_FILE_EXTENSIONS
+#folder
+ANOTHER_SUBFOLDER
+#names
+MATCHING_STRINGS(ex. video) -optional
+#ext
+MATCHING_FILE_EXTENSIONS
