@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Folder_sorter.DirUtil;
 
@@ -10,6 +12,12 @@ namespace Folder_sorter
         public static List<Folder> ReadConfig(string config_path)
         {
             var folders = new List<Folder>();
+            if (!File.Exists(config_path))
+            {
+                EventLog.WriteEntry("SorterSource","Error reading configuration file.\n" +
+                                     "Please check the entered path.", EventLogEntryType.Error);
+                Environment.Exit(0);
+            }
             string[] lines = File.ReadAllLines(config_path);
             string marker = "";
             foreach (string line in lines)

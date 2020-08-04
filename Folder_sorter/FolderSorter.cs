@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ServiceProcess;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Folder_sorter
 {
@@ -13,9 +15,9 @@ namespace Folder_sorter
         {
             InitializeComponent();
             //Log setup
-            eventLog1 = new System.Diagnostics.EventLog();
-            if (!System.Diagnostics.EventLog.SourceExists("SorterSource"))
-                System.Diagnostics.EventLog.CreateEventSource(
+            eventLog1 = new EventLog();
+            if (!EventLog.SourceExists("SorterSource"))
+                EventLog.CreateEventSource(
                     "SorterSource", "SorterLog");
             eventLog1.Source = "SorterSource";
             eventLog1.Log = "SorterLog";
@@ -23,14 +25,14 @@ namespace Folder_sorter
 
         protected override void OnStart(string[] args)
         {
-            //installutil.exe
-            eventLog1.WriteEntry("Reading configuration file", EventLogEntryType.Information);
+            Thread.Sleep(10000);
             activeFolders = Config.ReadConfig(args[0]);
             //TODO: Setup event for config change
         }
 
         protected override void OnStop()
         {
+            EventLog.Dispose();
         }
     }
 }
