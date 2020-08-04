@@ -25,7 +25,7 @@ namespace Folder_sorter
         {
             //installutil.exe
             eventLog1.WriteEntry("Reading configuration file", EventLogEntryType.Information);
-            activeFolders = Config.ReadConfig(@"C:\Users\ivank\OneDrive\C#\Folder_sorter\Folder_sorter\bin\Debug\config.sortconf");
+            activeFolders = Config.ReadConfig(args[0]);
             //TODO: Setup event for config change
         }
 
