@@ -25,7 +25,6 @@ namespace Folder_sorter
 
         protected override void OnStart(string[] args)
         {
-            Thread.Sleep(10000);
             activeFolders = Config.ReadConfig(args[0]);
             //TODO: Setup event for config change
         }
